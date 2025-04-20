@@ -24,7 +24,7 @@ class RealFrankaMixer(tfds.core.GeneratorBasedBuilder):
         """
         dataset_name = "real_franka_mixer"
         self.dataset_name = dataset_name
-        self.raw_data_path = "/home/hongyi/DATA/real_franka_datasets/mix_machine_new"
+        self.raw_data_path = "/home/david/Datasets/mix_machine_new"
         super().__init__()
 
     def _info(self):
@@ -152,7 +152,7 @@ def get_all_file_names(path):
 
 
 if __name__ == "__main__":
-    folder_path = "/home/hongyi/DATA/real_franka_datasets/mix_machine_new"
+    folder_path = "/home/david/Datasets/mix_machine_new"
 
     pkl_files = get_all_file_names(folder_path)
 
