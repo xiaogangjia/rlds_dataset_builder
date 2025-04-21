@@ -60,7 +60,7 @@ class robocasa_turnonstove(tfds.core.GeneratorBasedBuilder):
                             'sampled_point_cloud': tfds.features.Tensor(shape=(1024, 6), dtype=tf.float32),
                             'uniform_sampled_point_cloud': tfds.features.Tensor(shape=(1024, 6), dtype=tf.float32),
                         }),
-                        'action': tfds.features.Tensor(shape=(12,), dtype=tf.float32),
+                        'action': tfds.features.Tensor(shape=(7,), dtype=tf.float32),
                         'reward': tfds.features.Tensor(shape=(), dtype=tf.float32),
                         'timestamp': tfds.features.Tensor(shape=(), dtype=tf.float32),
                         'frame_index': tfds.features.Tensor(shape=(), dtype=tf.int32),
@@ -153,7 +153,7 @@ def process_episode_data(file_path):
 
         for idx in range(demo_length):
 
-            action = actions[idx].astype(np.float32)
+            action = actions[idx][:7].astype(np.float32)
 
             robot0_agentview_left_image = robot0_agentview_left_images[idx].astype(np.uint8)
             robot0_agentview_right_image = robot0_agentview_right_images[idx].astype(np.uint8)
