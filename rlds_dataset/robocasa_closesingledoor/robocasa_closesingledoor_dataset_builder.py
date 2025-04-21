@@ -11,7 +11,7 @@ from pathlib import Path
 import pickle
 
 # horeka path: /hkfs/work/workspace/scratch/ll6323-david_dataset_2/robocasa_datasets/v0.1/single_stage/kitchen_stove/TurnOnStove/2024-05-02/processed_demo_128_128.hdf5
-raw_data_path = os.path.join("/hkfs/work/workspace/scratch/ll6323-david_dataset_2/robocasa_datasets/v0.1/single_stage", "kitchen_doors/CloseSingleDoor/2024-04-24/processed_demo_128_128.hdf5") #"/mnt/d/kit/masterarbeit/processed_demo_128_128.hdf5"
+raw_data_path = os.path.join("/hkfs/work/workspace/scratch/ll6323-david_dataset_2/robocasa_datasets/v0.1/single_stage", "kitchen_doors/CloseSingleDoor/2024-04-24/processed_demo_128_128.hdf5") #"/home/david/2025/processed_demo_128_128.hdf5" 
 
 env_data = h5py.File(raw_data_path, "r")
 env_data = env_data["data"]
@@ -112,7 +112,7 @@ def process_episode_data(file_path):
 
         lang = json.loads(env_data[file_path].attrs["ep_meta"])["lang"]
 
-        actions = env_data[file_path]['actions']
+        actions = env_data[file_path]['actions'][:, :7]
 
         full_point_clouds = env_data[file_path]["obs"]["point_cloud"]
 
@@ -153,7 +153,7 @@ def process_episode_data(file_path):
 
         for idx in range(demo_length):
 
-            action = actions[idx][:7].astype(np.float32)
+            action = actions[idx].astype(np.float32)
 
             robot0_agentview_left_image = robot0_agentview_left_images[idx].astype(np.uint8)
             robot0_agentview_right_image = robot0_agentview_right_images[idx].astype(np.uint8)
@@ -240,7 +240,7 @@ def get_all_file_names(path):
 
 
 if __name__ == "__main__":
-    folder_path = os.path.join("/hkfs/work/workspace/scratch/ll6323-david_dataset_2/robocasa_datasets/v0.1/single_stage", "kitchen_doors/CloseSingleDoor/2024-04-24/processed_demo_128_128.hdf5") #"/mnt/d/kit/masterarbeit/processed_demo_128_128.hdf5"
+    folder_path = os.path.join("/hkfs/work/workspace/scratch/ll6323-david_dataset_2/robocasa_datasets/v0.1/single_stage", "kitchen_doors/CloseSingleDoor/2024-04-24/processed_demo_128_128.hdf5") #"/home/david/2025/processed_demo_128_128.hdf5" #
 
     pkl_files = get_all_file_names(folder_path)
 

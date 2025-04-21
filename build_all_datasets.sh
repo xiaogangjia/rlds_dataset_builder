@@ -1,3 +1,4 @@
+export TFDS_DATA_DIR="/hkfs/work/workspace/scratch/ll6323-david_dataset_2/rlds_robocasa"
 ROOT_DIR="$(pwd)/rlds_dataset"
 
 for TASK_DIR in "${ROOT_DIR}"/robocasa_*; do
