@@ -18,7 +18,7 @@ env_data = env_data["data"]
 
 
 
-class robocasa_turnonstove(tfds.core.GeneratorBasedBuilder):
+class robocasa_coffeesetupmug(tfds.core.GeneratorBasedBuilder):
     """
     Convert a Hugging Face dataset into a TFDS-style episodic dataset with metadata.
     """
@@ -30,7 +30,7 @@ class robocasa_turnonstove(tfds.core.GeneratorBasedBuilder):
             dataset_name (str): Name of the Hugging Face dataset.
             episodes (List[int]): List of episode indices to load. Default is None (load all).
         """
-        dataset_name = "robocasa_turnonstove"
+        dataset_name = "robocasa_coffeesetupmug"
         self.dataset_name = dataset_name
         self.raw_data_path = raw_data_path
 
